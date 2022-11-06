@@ -4,6 +4,17 @@ from bs4 import BeautifulSoup
 import json
 import csv
 
+def parse_names(text):
+    names = ''
+    if 'New Listing' in text:
+        for char in text[11:]:
+            names += char
+    else:
+        for char in text:
+            names += char
+
+    return names
+
 def parse_itemssold(text):
     numbers = ''
     for char in text:
@@ -12,7 +23,7 @@ def parse_itemssold(text):
     if 'sold' in text:
         return int(numbers)
     else:
-        return 0
+        return None
 
 def parse_prices(text):
     prices = ''
@@ -81,7 +92,7 @@ if __name__ == '__main__':
             name = None
             tags_name = tag_item.select('.s-item__title')
             for tag in tags_name:
-                name = tag.text
+                name = parse_names(tag.text)
 
             price = None
             tags_prices = tag_item.select('.s-item__price')
@@ -104,7 +115,7 @@ if __name__ == '__main__':
                 freereturns = True
 
             items_sold = None
-            tags_itemssold = tag_item.select('.s-item__hotness')
+            tags_itemssold = tag_item.select('.s-item__hotness, .s-item__additionalItemHotness')
             for tag in tags_itemssold:
                 items_sold = parse_itemssold(tag.text)
 
