@@ -16,12 +16,12 @@ If you prefer fewer pages than 10, you can specify in this way:
 ```
 $ python3 ebay-dl.py 'insert query here' --num_pages=7
 ```
+Here, any number can substitute for `7`.
 
 If you prefer the file in `.csv` format (you do not to need `--num_pages` before `--csv`):
 ```
 $ python3 ebay-dl.py 'insert query here' --num_pages=7 --csv
 ```
-Here, any number can substitute for `7`.
 
 ### Retrieve my queries
 To retrieve the same queries as I did ('family guy', 'jane jacobs', and 'ishiguro'), you can enter these lines:
