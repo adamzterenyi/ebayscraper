@@ -12,11 +12,11 @@ Here is a template command line to run the python file:
 $ python3 ebay-dl.py 'insert query here'
 ```
 
-If you prefer fewer pages than 10, you can specify in this way:
+If you prefer fewer pages than 10, you can specify in this way (here, any number can substitute for `7`):
 ```
 $ python3 ebay-dl.py 'insert query here' --num_pages=7
 ```
-Here, any number can substitute for `7`.
+
 
 If you prefer the file in `.csv` format (you do not to need `--num_pages` before `--csv`):
 ```
