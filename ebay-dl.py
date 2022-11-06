@@ -5,16 +5,6 @@ import json
 import csv
 
 def parse_itemssold(text):
-    '''
-    Takes as input a string and returns the number of items sold, as specified in the string
-
-    >>> parse_itemssold('38 sold')
-    38
-    >>> parse_itemssold('14 watchers')
-    0
-    >>> parse_itemssold('Almost gone')
-    0
-    '''
     numbers = ''
     for char in text:
         if char in '1234567890':
@@ -32,6 +22,8 @@ def parse_prices(text):
         for char in text:
             if char in '1234567890':
                 prices += char
+            if char == 't':
+                return int(prices)
         return int(prices)
 
 def parse_statuses(text):
@@ -70,12 +62,6 @@ if __name__ == '__main__':
     items = []
     for page_number in range(1, int(args.num_pages)+1):
         # build the url
-        '''
-        url = 'https://www.ebay.com/sch/i.html?_from=R40&_nkw=' 
-        url += args.search_term
-        url += '&_sacat=0&LH_TitleDesc=0&_pgn='
-        url += str(page_number)
-        '''
         url = 'https://www.ebay.com/sch/i.html?_from=R40&_nkw='+ args.search_term +'&_sacat=0&LH_TitleDesc=0&_pgn='+ str(page_number)
         print('url=', url)
 
@@ -90,7 +76,7 @@ if __name__ == '__main__':
 
         # loop over the items in the page
         tags_items = soup.select('.s-item')
-        for tag_item in tags_items:
+        for tag_item in tags_items[1:]:
 
             name = None
             tags_name = tag_item.select('.s-item__title')
@@ -134,8 +120,6 @@ if __name__ == '__main__':
         
         print('len(tags_items)=', len(tags_items))
         print('len(items)=', len(items))
-
-
 
     if args.csv == True:
         # write the CSV to a file
