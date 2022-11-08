@@ -1,6 +1,6 @@
 # Scraping from eBay
 
-For this [project_03](https://github.com/mikeizbicki/cmc-csci040/tree/2022fall/project_03), I created a python script that scrapes eBay product listings for information like prices and # of items sold. It then saves this data into a `.json` or `.csv` file.
+For [project_03](https://github.com/mikeizbicki/cmc-csci040/tree/2022fall/project_03), I created a python script that scrapes eBay product listings for information like prices and # of items sold. It then saves this data into a `.json` or `.csv` file.
 
 Within this repository, `ebay-dl.py` conducts this entire process. It uses `argparse`, `requests`, and `bs4` libraries for command line and data scraping purposes, along with the `json` and `csv` libraries to create the `.json` and `.csv` files. Each file denotes the `name` of the item listed; its `price`; whether it is pre-owned, refurbished, or new (`status`); `shipping` cost; whether or not it has `free_returns`; and the number of `items_sold`.
 
